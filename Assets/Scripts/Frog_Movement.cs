@@ -5,8 +5,8 @@ using UnityEngine;
 public class Frog_Movement : MonoBehaviour
 {
     [Header("Speed")]
-    [Range(0, 20)] [SerializeField] private float speed = 5;
-    [Range(0, 20)] [SerializeField] private float SpaceOfJump = 2;
+    [Range(0, 20)][SerializeField] private float speed = 5;
+    [Range(0, 20)][SerializeField] private float SpaceOfJump = 2;
 
     [Space]
     [Header("Transform")]
@@ -24,7 +24,7 @@ public class Frog_Movement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if(from != null && to != null)
+        if (from != null && to != null)
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(from.position, to.position);
@@ -48,9 +48,9 @@ public class Frog_Movement : MonoBehaviour
         {
             RaycastHit2D groundInfo = Physics2D.Raycast(to.position, Vector2.down, 2f);
 
-            if(groundInfo.collider == true)
+            if (groundInfo.collider == true)
             {
-                if(!animationStop)
+                if (!animationStop)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, to.position, speed * Time.deltaTime);
                 }
@@ -58,7 +58,7 @@ public class Frog_Movement : MonoBehaviour
             else
             {
                 right = !right;
-                if(right)
+                if (right)
                 {
                     Flip();
                     to.position = new Vector3(from.position.x - SpaceOfJump, to.position.y, 0);
@@ -82,7 +82,7 @@ public class Frog_Movement : MonoBehaviour
                     to.position = new Vector3(from.position.x + SpaceOfJump, to.position.y, 0);
                 }
             }
-        }   
+        }
     }
 
     private IEnumerator StopMove()

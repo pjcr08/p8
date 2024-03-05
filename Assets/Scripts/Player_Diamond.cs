@@ -8,6 +8,8 @@ public class Player_Diamond : MonoBehaviour
     private Player player;
 
     public TextMeshProUGUI Gems;
+    public AudioManager audioManager;
+    public AudioClip sonidoMoneda;
 
     private void Start()
     {

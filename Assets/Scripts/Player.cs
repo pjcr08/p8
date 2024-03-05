@@ -6,6 +6,9 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    public AudioManager audioManager;
+    public AudioClip sonidoSalto;
+
     [Header("Move")]
     [Range(400, 800)][SerializeField] private float jumpForce = 400f;
     [Range(0, .3f)][SerializeField] private float Smoothing = .05f;
@@ -74,6 +77,7 @@ public class Player : MonoBehaviour
             anim.SetBool("Jump", false);
             anim.SetBool("Falling", true);
             rg2d.velocity += Vector2.up * Physics2D.gravity.y * (fallGravity - 1) * Time.deltaTime;
+            audioManager.ReproducirSonido(sonidoSalto);
         }
         else if (rg2d.velocity.y > 0 && !Input.GetButton("Jump"))
         {
